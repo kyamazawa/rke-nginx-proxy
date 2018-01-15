@@ -1,0 +1,12 @@
+---
+pipeline:
+  publish-rke-nginx-proxy:
+    image: plugins/docker
+    dockerfile: package/Dockerfile
+    repo: rancher/rke-nginx-proxy
+    context: package/
+    tag: ${DRONE_TAG}
+    secrets: [docker_username, docker_password]
+    when:
+      branch: master
+      event: tag
